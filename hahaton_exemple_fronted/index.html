@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Самарский университет | Личный кабинет</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="divlogoname"><img src="logoname.png" class="logoname"></div>
+</header>
+
+<div class="sidebar" id="sidebar">
+    <div class="logocenter" id="logocenter">
+        <img src="logo_osnovnoy_small.png" class="logo" id="logo"> 
+    </div>
+    <button class="toggle-btn" id="toggleBtn">
+        <img src="expand.png">
+    </button>
+    <ul class="menu" id="menu">
+        <li>
+            <img src="home1.png" class="icon">
+            <span class="text">Главная</span>
+        </li>
+        <li>
+            <img src="messenger.png" class="icon">
+            <span class="text">Мессенджер</span>
+        </li>
+        <li onclick="location.href='index.html';" style="cursor:pointer;">
+            <img src="schedule.png" class="icon">
+            <span class="text">Расписание</span>
+        </li>
+    </ul>
+</div>
+
+<div class="main_content">
+    <div>
+        <div class="info-label"></div>
+        <div class="info-rectangle">
+            <div class="table" id="scheduleTable">
+                <div class="row header-row" id="tableHeader">
+                    <div class="cell time">Время</div>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>
+
+<script>
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const logo = document.getElementById('logo');
+    const logocenter = document.getElementById('logocenter');
+    const menu = document.getElementById('menu');
+
+    toggleBtn.addEventListener('click', () => {
+        if (!toggleBtn.classList.contains('expanded1')) {
+            toggleBtn.classList.add('expanded1');
+            sidebar.classList.add('expanded1');
+        }
+        else{
+            toggleBtn.classList.remove('expanded1');
+            sidebar.classList.remove('expanded1');
+        }
+    });
+
+    sidebar.addEventListener('mouseenter', () => {
+        logo.src = 'logo_osnovnoy.png';
+        logo.classList.add('small');
+        logocenter.classList.add('small');
+        menu.classList.add('small');
+    });
+
+    sidebar.addEventListener('mouseleave', () => {
+        if (!sidebar.classList.contains('expanded1')) {
+            logo.src = 'logo_osnovnoy_small.png';
+            logo.classList.remove('small');
+            logocenter.classList.remove('small');
+            menu.classList.remove('small');
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentYear = new Date().getFullYear();
+        const infoLabel = document.querySelector('.info-label');
+        infoLabel.textContent = (currentYear-1) + " / " + currentYear + " учебный год";
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('http://localhost:8000/schedule')
+            .then(response => response.json())
+            .then(data => {
+
+                const tableHeader = document.getElementById('tableHeader');
+                data.days.forEach(dayObj => {
+                    const headerCell = document.createElement('div');
+                    headerCell.className = 'cell';
+                    headerCell.innerHTML = `${dayObj.name}<br>${dayObj.date}`;
+                    tableHeader.appendChild(headerCell);
+                });
+
+                const scheduleTable = document.getElementById('scheduleTable');
+                data.slots.forEach(slot => {
+                    const row = document.createElement('div');
+                    row.className = 'row';
+                    const timeCell = document.createElement('div');
+                    timeCell.className = 'cell time';
+                    timeCell.textContent = slot.time;
+                    row.appendChild(timeCell);
+
+                    slot.subjects.forEach(subject => {
+                        const cell = document.createElement('div');
+                        cell.className = 'cell';
+                        if (subject) {
+                            if(subject.type == "Лабораторная"){
+                                cell.classList.add('subject', 'purple');
+                            } else if(subject.type == "Лекция"){
+                                cell.classList.add('subject', 'green');
+                            } else if(subject.type == "Практика"){
+                                cell.classList.add('subject', 'blue');
+                            }
+                            else if(subject.type == "Экзамен"){
+                                cell.classList.add('subject', 'cyan');
+                            } else {
+                                cell.classList.add('subject');
+                            }
+                            
+                            cell.innerHTML = `
+                                <b>${subject.name}</b><br>
+                                <span>${subject.teacher}</span><br>
+                                <span>${subject.platform ? subject.platform : subject.room}</span>
+                                ${subject.conference ? `<br><a href="${subject.conference}">Перейти в конференцию</a>` : ''}
+                            `;
+                            cell.setAttribute('data-subject', subject.name);
+                            cell.addEventListener('click', () => {
+                                window.location.href = `subject.html?name=${encodeURIComponent(subject.name)}`;
+                            });
+                        }
+                        row.appendChild(cell);
+                    });
+                    scheduleTable.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error("Ошибка получения данных расписания:", error);
+            });
+    });
+</script>
+
+</body>
+</html>

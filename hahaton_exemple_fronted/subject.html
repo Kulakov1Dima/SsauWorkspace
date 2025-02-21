@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title id="subjectTitle">Информация о предмете</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="divlogoname"><img src="logoname.png" class="logoname"></div>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <div class="logocenter" id="logocenter">
+            <img src="logo_osnovnoy_small.png" class="logo" id="logo"> 
+        </div>
+        <button class="toggle-btn" id="toggleBtn">
+            <img src="expand.png">
+        </button>
+        <ul class="menu" id="menu">
+            <li>
+                <img src="home1.png" class="icon">
+                <span class="text">Главная</span>
+            </li>
+            <li>
+                <img src="messenger.png" class="icon">
+                <span class="text">Мессенджер</span>
+            </li>
+            <li onclick="location.href='index.html';" style="cursor:pointer;">
+                <img src="schedule.png" class="icon">
+                <span class="text">Расписание</span>
+            </li>
+        </ul>
+    </div>
+    <div class="main_content">
+        <div class="info-subject"></div>
+          <div class="info-rectangle">
+            <div class="task_info_table">
+              <div class="row">
+                <div class="cell task_state">
+
+                  <div class="lab-details hidden">
+                    <div class="info-rectangle">
+                      <div class="lab-comment">
+                        <h3>Комментарий преподавателя</h3>
+                        <p id="labComment"></p>
+                        <h4>Статус: <span id="labStatus"></span></h4>
+                        <div class="progress-container">
+                          <div class="progress-bar" id="labProgressBar" style="width: 0%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="teacher-card">
+                    <h4 class="teacher-title">Ваш преподаватель</h4>
+                    <div class="teacher-info">
+                      <img src="teacher.jpg" alt="Преподаватель" class="teacher-photo" id="teacherPhoto">
+                      <div class="teacher-details">
+                        <p id="teacherName"></p>
+                        <p>Email: <a href="mailto:ivanov@example.com" id="teacherEmail"></a></p>
+                        <button class="msg-button">Написать сообщение</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p id="subjectDescription"></p>
+
+                </div>
+                <div class="cell task_state">
+                  <div class="task_table" id="taskTable">
+                    <!-- Лабораторные работы будут добавлены сюда динамически -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <script>
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const logo = document.getElementById('logo');
+    const logocenter = document.getElementById('logocenter');
+    const menu = document.getElementById('menu');
+
+    toggleBtn.addEventListener('click', () => {
+        if (!toggleBtn.classList.contains('expanded1')) {
+            toggleBtn.classList.add('expanded1');
+            sidebar.classList.add('expanded1');
+        }
+        else{
+            toggleBtn.classList.remove('expanded1');
+            sidebar.classList.remove('expanded1');
+        }
+    });
+
+    sidebar.addEventListener('mouseenter', () => {
+        logo.src = 'logo_osnovnoy.png';
+        logo.classList.add('small');
+        logocenter.classList.add('small');
+        menu.classList.add('small');
+    });
+
+    sidebar.addEventListener('mouseleave', () => {
+        if (!sidebar.classList.contains('expanded1')) {
+            logo.src = 'logo_osnovnoy_small.png';
+            logo.classList.remove('small');
+            logocenter.classList.remove('small');
+            menu.classList.remove('small');
+        }
+    });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const tasks = document.querySelectorAll('.task');
+  const teacherCard = document.querySelector('.teacher-card');
+  const labDetails = document.querySelector('.lab-details');
+  const labComment = document.getElementById('labComment');
+  const labStatus = document.getElementById('labStatus');
+  const labProgressBar = document.getElementById('labProgressBar');
+  const taskTable = document.getElementById('taskTable'); // Родительский элемент
+
+  // Делегирование событий
+  taskTable.addEventListener('click', async (event) => {
+    const task = event.target.closest('.task'); // Ищем ближайший элемент с классом .task
+    if (!task) return; // Если клик был не на элементе .task, выходим
+
+    const labId = task.dataset.labId; // Получаем ID лабораторной работы
+    if (!labId) return; // Если у элемента нет ID, выходим
+
+    try {
+      // Запрашиваем данные о лабораторной работе с сервера
+      const response = await fetch(`http://localhost:8000/lab/${labId}`);
+      const labData = await response.json();
+
+      if (labData.error) {
+        console.error(labData.error);
+        return;
+      }
+
+      // Обновляем интерфейс
+      labComment.textContent = labData.comment;
+      labStatus.textContent = labData.status;
+      labProgressBar.style.width = `${labData.progress}%`;
+
+      // Показываем блок с комментарием преподавателя
+      labDetails.classList.remove('hidden');
+      teacherCard.classList.add('hidden');
+
+      // Обновляем задание лабораторной работы
+      let existingAssignment = document.querySelector('.assignment-details');
+      if (!existingAssignment) {
+        existingAssignment = document.createElement('div');
+        existingAssignment.className = 'assignment-details main_content';
+        document.body.appendChild(existingAssignment);
+      }
+
+      existingAssignment.innerHTML = `
+        <div class="info-rectangle">
+          <h3>Задание лабораторной работы</h3>
+          <p>${labData.description}</p>
+          <p>Статус: <span class="assignment-status">${labData.status}</span></p>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: ${labData.progress}%;"></div>
+          </div>
+        </div>
+      `;
+    } catch (error) {
+      console.error('Ошибка при загрузке данных:', error);
+    }
+  });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  let subjectName = urlParams.get('name');
+
+  if (!subjectName || subjectName === "null") {
+    window.location.href = 'error.html';
+  } else {
+    const infoLabel = document.querySelector('.info-subject');
+    infoLabel.textContent = subjectName;
+    document.getElementById("subjectTitle").textContent = subjectName;
+    document.getElementById("subjectDescription").textContent = `Здесь могла бы быть подробная информация о предмете «${subjectName}».`;
+
+    const defaultTeacher = {
+      name: "Не найден",
+      email: "null",
+      photo: null
+    };
+
+    fetch(`http://localhost:8000/teacher?subject=${encodeURIComponent(subjectName)}`)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('teacherPhoto').src = data.photo || defaultTeacher.photo;
+        document.getElementById('teacherName').textContent = data.name || defaultTeacher.name;
+        document.getElementById('teacherEmail').href = `mailto:${data.email || defaultTeacher.email}`;
+        document.getElementById('teacherEmail').textContent = data.email || defaultTeacher.email;
+      })
+      .catch(error => {
+        console.error('Ошибка получения данных преподавателя:', error);
+        document.getElementById('teacherPhoto').src = defaultTeacher.photo;
+        document.getElementById('teacherName').textContent = defaultTeacher.name;
+        document.getElementById('teacherEmail').href = `mailto:${defaultTeacher.email}`;
+        document.getElementById('teacherEmail').textContent = defaultTeacher.email;
+      });
+
+    fetch(`http://localhost:8000/labs/${encodeURIComponent(subjectName)}`)
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(lab => {
+          const labDiv = document.createElement('div');
+          labDiv.className = 'task subject';
+          labDiv.dataset.labId = lab.id;
+
+          if (lab.status === "Сдано") {
+            labDiv.classList.add('green');
+          } else if (lab.status === "Не сдано") {
+            labDiv.classList.add('red');
+          } else if (lab.status === "В процессе") {
+            labDiv.classList.add('blue');
+          }
+
+          labDiv.innerHTML = `
+            <b>${lab.title}</b><br>
+            <span>Статус: ${lab.status}</span>
+          `;
+          taskTable.appendChild(labDiv);
+        });
+      })
+      .catch(error => {
+        console.error('Ошибка при загрузке данных:', error);
+      });
+  }
+});
+  </script>
+</body>
+</html>
