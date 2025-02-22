@@ -1,0 +1,1175 @@
+[
+    {
+        "id": "96b3a7bdffc02a46",
+        "type": "tab",
+        "label": "Хакатон",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b83cceb90218bb16",
+        "type": "group",
+        "z": "96b3a7bdffc02a46",
+        "name": "Внешний вид",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "775516f75b5da7cc",
+            "8269f2a4a554d9e6",
+            "68bfdecb21634892",
+            "9b58ba8bc66a35cb",
+            "eb6104075409be7d",
+            "3043fb2166b3eba3",
+            "6ad66adbfcccd7fe",
+            "db4560c7c2073a98",
+            "91454e29df862af1",
+            "ee21ea178bdc7e8e",
+            "9647228e347af4de",
+            "f867e8a8395f63a4"
+        ],
+        "x": 34,
+        "y": -1,
+        "w": 792,
+        "h": 202
+    },
+    {
+        "id": "a18ab01cd2004dcd",
+        "type": "group",
+        "z": "96b3a7bdffc02a46",
+        "name": "Данные",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "0736f6e8124b7f73",
+            "6b8cc300ad5f3b1b",
+            "f656923fe1ced9d7",
+            "953d496356877e9a",
+            "98a258e7e35f42a8",
+            "2085a41933487b98",
+            "acc184a576fc1127",
+            "e94ef20631abe1fc",
+            "eed8cf825b35c359",
+            "0c36d0543db77def",
+            "a029268e80a98e77",
+            "7f16958aef058167",
+            "9c027dd27a1cc616",
+            "6bd9fdcda1dda3e7",
+            "a2b7d415a98b5d0f",
+            "43c91f459a58a328",
+            "9aa00395d33b40c5",
+            "9b30b95168626b36"
+        ],
+        "x": 854,
+        "y": 59,
+        "w": 1052,
+        "h": 322
+    },
+    {
+        "id": "3bebb74761a81a08",
+        "type": "group",
+        "z": "96b3a7bdffc02a46",
+        "name": "Управление данными",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "9a455b26f95f9217",
+            "37a5db43ab28624b",
+            "9baf928dbb049ac3",
+            "bf0f4b0d9a068070",
+            "11b0ed92c47dea77",
+            "f423a171433e2d78",
+            "5280bffcb685a08c"
+        ],
+        "x": 24,
+        "y": 219,
+        "w": 602,
+        "h": 202
+    },
+    {
+        "id": "4a9709e51fb4d4ca",
+        "type": "group",
+        "z": "96b3a7bdffc02a46",
+        "name": "Управление данными таблицы labs",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "9744101294d8caf9",
+            "5b03cc4f0f3662e0",
+            "cc9fd80defe950bd",
+            "b72770f5f66754f0",
+            "dc0cc6ffbeb485d9",
+            "c0e25c16365c43ba",
+            "338d55922913d74e",
+            "ccb2d0996d6afc01",
+            "89f1527c88a16070",
+            "fbc0935fca15c593",
+            "0dbc483a7322a35d",
+            "48702177fc9e6139",
+            "904e73cc4417f2b4",
+            "054a160dfa0fc805",
+            "3c34c5b62d73b464",
+            "c56c1a15591db573",
+            "ee744ce133eb65d6",
+            "daad2982dcaf9457",
+            "c072070b9ccdf767"
+        ],
+        "x": 24,
+        "y": 439,
+        "w": 782,
+        "h": 382
+    },
+    {
+        "id": "775516f75b5da7cc",
+        "type": "http in",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "",
+        "url": "/ssau",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 40,
+        "wires": [
+            [
+                "9b58ba8bc66a35cb"
+            ]
+        ]
+    },
+    {
+        "id": "8269f2a4a554d9e6",
+        "type": "template",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "Внешний вид расписания",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"ru\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Самарский университет | Личный кабинет</title>\n    <style>\n        {{{cssText}}}\n    </style>\n    <link rel=\"icon\" type=\"image/png\" href=\"https://cabinet.ssau.ru/asset/favicon.ico\">\n</head>\n\n<body>\n\n    <header class=\"topbar\">\n        <div class=\"divlogoname\"><img src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logoname.png\" class=\"logoname\"></div>\n    </header>\n\n    <div class=\"sidebar\" id=\"sidebar\">\n        <div class=\"logocenter\" id=\"logocenter\">\n            <img src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logo_osnovnoy_small.png\" class=\"logo\" id=\"logo\">\n        </div>\n        <button class=\"toggle-btn\" id=\"toggleBtn\">\n        <img src=\"https://github.com/Kulakov1Dima/SsauWorkspace/blob/main/hahaton_exemple_fronted/expand.png?raw=true\">\n    </button>\n        <ul class=\"menu\" id=\"menu\">\n            <li>\n                <img src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/home1.png\" class=\"icon\">\n                <span class=\"text\">Главная</span>\n            </li>\n            <li onclick=\"location.href='http://ibook.daa2557bc9hb3.keenetic.pro/messenger';\" style=\"cursor:pointer;\">\n                <img src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/messenger.png\" class=\"icon\">\n                <span class=\"text\">Мессенджер</span>\n            </li>\n            <li onclick=\"location.href='http://ibook.daa2557bc9hb3.keenetic.pro/ssau';\" style=\"cursor:pointer;\">\n                <img src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/schedule.png\" class=\"icon\">\n                <span class=\"text\">Расписание</span>\n            </li>\n        </ul>\n    </div>\n\n    <div class=\"main_content\">\n        <div>\n            <div class=\"info-label\"></div>\n            <div class=\"info-rectangle\">\n                <div class=\"table\" id=\"scheduleTable\">\n                    <div class=\"row header-row\" id=\"tableHeader\">\n                        <div class=\"cell time\">Время</div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n    <script>\n    const imagesToPreload = [\n    \"http://ibook.daa2557bc9hb3.keenetic.pro/logo_osnovnoy.png\",\n    \"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logo_osnovnoy_small.png\"\n    ];\n    \n    imagesToPreload.forEach(src => {\n    const img = new Image();\n    img.src = src;\n    });\n    \n    const sidebar = document.getElementById('sidebar');\n    const toggleBtn = document.getElementById('toggleBtn');\n    const logo = document.getElementById('logo');\n    const logocenter = document.getElementById('logocenter');\n    const menu = document.getElementById('menu');\n\n    toggleBtn.addEventListener('click', () => {\n        if (!toggleBtn.classList.contains('expanded1')) {\n            toggleBtn.classList.add('expanded1');\n            sidebar.classList.add('expanded1');\n        }\n        else{\n            toggleBtn.classList.remove('expanded1');\n            sidebar.classList.remove('expanded1');\n        }\n    });\n\n    sidebar.addEventListener('mouseenter', () => {\n        logo.src = 'http://ibook.daa2557bc9hb3.keenetic.pro/logo_osnovnoy.png';\n        logo.classList.add('small');\n        logocenter.classList.add('small');\n        menu.classList.add('small');\n    });\n\n    sidebar.addEventListener('mouseleave', () => {\n        if (!sidebar.classList.contains('expanded1')) {\n            logo.src = 'https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logo_osnovnoy_small.png';\n            logo.classList.remove('small');\n            logocenter.classList.remove('small');\n            menu.classList.remove('small');\n        }\n    });\n\n    document.addEventListener('DOMContentLoaded', () => {\n        const currentYear = new Date().getFullYear();\n        const infoLabel = document.querySelector('.info-label');\n        infoLabel.textContent = (currentYear-1) + \" / \" + currentYear + \" учебный год\";\n    });\n\n    document.addEventListener('DOMContentLoaded', () => {\n        fetch('http://ibook.daa2557bc9hb3.keenetic.pro/schedule')\n            .then(response => response.json())\n            .then(data => {\n\n                const tableHeader = document.getElementById('tableHeader');\n                data.days.forEach(dayObj => {\n                    const headerCell = document.createElement('div');\n                    headerCell.className = 'cell';\n                    headerCell.innerHTML = `${dayObj.name}<br>${dayObj.date}`;\n                    tableHeader.appendChild(headerCell);\n                });\n\n                const scheduleTable = document.getElementById('scheduleTable');\n                data.slots.forEach(slot => {\n                    const row = document.createElement('div');\n                    row.className = 'row';\n                    const timeCell = document.createElement('div');\n                    timeCell.className = 'cell time';\n                    timeCell.textContent = slot.time;\n                    row.appendChild(timeCell);\n\n                    slot.subjects.forEach(subject => {\n                        const cell = document.createElement('div');\n                        cell.className = 'cell';\n                        if (subject) {\n                            if(subject.type == \"Лабораторная\"){\n                                cell.classList.add('subject', 'purple');\n                            } else if(subject.type == \"Лекция\"){\n                                cell.classList.add('subject', 'green');\n                            } else if(subject.type == \"Практика\"){\n                                cell.classList.add('subject', 'blue');\n                            }\n                            else if(subject.type == \"Экзамен\"){\n                                cell.classList.add('subject', 'cyan');\n                            } else {\n                                cell.classList.add('subject');\n                            }\n                            \n                            cell.innerHTML = `\n                                <b>${subject.name}</b><br>\n                                <span>${subject.teacher}</span><br>\n                                <span>${subject.platform ? subject.platform : subject.room}</span>\n                                ${subject.conference ? `<br><a href=\"${subject.conference}\">Перейти в конференцию</a>` : ''}\n                            `;\n                            cell.setAttribute('data-subject', subject.name);\n                            cell.addEventListener('click', () => {\n                                window.location.href = `subject?name=${encodeURIComponent(subject.name)}`;\n                            });\n                        }\n                        row.appendChild(cell);\n                    });\n                    scheduleTable.appendChild(row);\n                });\n            })\n            .catch(error => {\n                console.error(\"Ошибка получения данных расписания:\", error);\n            });\n    });\n    </script>\n\n</body>\n\n</html>",
+        "output": "str",
+        "x": 520,
+        "y": 40,
+        "wires": [
+            [
+                "68bfdecb21634892"
+            ]
+        ],
+        "icon": "node-red/parser-html.svg"
+    },
+    {
+        "id": "68bfdecb21634892",
+        "type": "http response",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 750,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "9b58ba8bc66a35cb",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "css",
+        "func": "var css = `\nbody {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 0;\n    height: 1200px;\n    background-color: #edf3fec1;\n}\n\n.topbar {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%; \n    height: 80px;\n    background-color: #fff;\n    color: white;\n    display: flex;\n    align-items: center;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding-left: 20px;\n    z-index: 1;\n}\n\n\n.sidebar {\n    width: 45px;\n    height: 100%;\n    background-color: #fff;\n    color: white;\n    position: fixed;\n    top: 0;\n    left: 0;\n    transition: width 0.3s;\n    overflow: visible;\n    white-space: nowrap;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding: 10px;\n    z-index: 10;\n}\n\n.sidebar.expanded1 {\n    width: 340px;\n    transition: width 0.7s ease; \n}\n\n.sidebar:hover {\n    width: 340px;\n    transition: width 0.7s ease; \n}\n\n.toggle-btn {\n    cursor: pointer;\n    text-align: center;\n    padding: 10px;\n    background-color: #EDF3FE;\n    border: none;\n    color: white;\n    width: 33px;\n    height: 33px;\n    border-radius: 50%;\n    outline: none;\n    position: absolute;\n    left: 82%;\n    top: 40px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding: 10px;\n}\n\n.toggle-btn.expanded1 {\n    transform: rotate(180deg);\n}\n\n.toggle-btn img {\n    width: 100%;\n    height: 100%;\n    object-fit: contain;\n    display: block;\n    transition: transform 0.2s ease;\n}\n\n.button-list {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n}\n\n.button-list li {\n    display: flex;\n    align-items: center;\n    padding: 10px;\n}\n\n.button-list li img {\n    width: 24px;\n    height: 24px;\n    margin-right: 10px;\n}\n\n.button-list li:hover {\n    background-color: #555;\n}\n\n.text {\n    display: none;\n}\n\n.sidebar.expanded .text {\n    display: inline;\n}\n\n.sidebar:hover .text {\n    display: inline;\n}\n\n.logo {\n    width: 30px;\n    height: auto;\n    left: 84%;\n}\n\n.logo.small {\n    width: 300px;\n    height: auto;\n    transition: width 0.5s ease; \n}\n\n.logocenter {\n    border: 5px solid;\n    position: absolute;\n    top: 45px;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    padding: 10px;\n}\n\n.logocenter.small {\n    border: 6px solid;\n    position: absolute;\n    top: 110px;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    padding: 10px;\n}\n\n.logoname {\n    width: 230px;\n    height: auto;\n}\n\n.divlogoname {\n    height: auto;\n    position: absolute;\n    top: 20px;\n    left: 80px;\n    padding: 10px;\n}\n\n.menu {\n    list-style: none;\n    position: absolute;\n    color: black;\n    top: 60px;\n    width: 95%;\n    padding: 0;\n    margin: 40px 0 0 0;\n    transition: transform 0.7s ease;\n}\n\n.menu.small {\n    list-style: none;\n    position: absolute;\n    color: black;\n    top: 170px;\n    width: 95%;\n    padding: 0;\n    margin: 40px 0 0 0;\n}\n\n.menu li {\n    display: flex;\n    align-items: center;\n    padding: 12px;\n    cursor: pointer;\n    transition: background 0.6s;\n}\n\n.menu li:hover {\n    background: #EDF3FE;\n}\n\n.icon {\n    width: 24px;\n    height: 24px;\n    margin-right: 40px;\n}\n\n.text {\n    display: inline-block; \n    opacity: 0;\n    transition: opacity 0.3s ease 0.8s;\n    font-size: 18px;\n}\n\n.sidebar:not(.expanded1) .menu li,\n.sidebar:hover:not(.expanded1) .menu li {\n    justify-content: left;\n}\n\n.sidebar:not(.expanded1) .text {\n    opacity: 0;\n    visibility: hidden;\n}\n\n.sidebar.expanded1 .menu li,\n.sidebar:hover .menu li {\n    \n    ustify-content: flex-start;\n    padding-left: 5px;\n}\n\n.sidebar.expanded1 .text,\n.sidebar:hover .text {\n    opacity: 1;\n    visibility: visible;\n    transition-delay: 0.8s;\n}\n\n.main_content {\n    top: 105px;\n    position: relative;\n    color: black;\n    margin-top: 10px;\n    margin-left: 100px;\n    padding: 2px;\n    transition: margin-left 0.3s ease;\n  }\n  \n  .sidebar.expanded1 ~ .main_content {\n    margin-left: 400px;\n  }\n  \n.info-box {\n    text-align: center;\n}\n  \n.info-label {\n    margin-bottom: 10px;\n    font-size: 18px;\n    font-weight: bold;\n}\n  \n.info-rectangle {\n    width: 98%;\n    padding-right: -100px;\n    background-color: #fcfcfc;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    border-radius: 10px;\n}\n\n.table {\n    display: grid;\n    padding: 5px;\n    grid-template-columns: 6.5vw 1fr 1fr 1fr 1fr 1fr 1fr;\n    gap: 5px;\n}\n\n.row {\n    display: contents;\n}\n\n.cell {\n    background: white;\n    padding: 20px;\n    border-radius: 10px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    min-height: 30px;\n    text-align: left;\n}\n\n.header-row .cell {\n    background: #EDF3FE;\n    font-weight: bold;\n    text-align: center;\n}\n\n.time {\n    font-weight: bold;\n    background: #EDF3FE;\n    padding: 20px;\n}\n\n.subject a {\n    color: blue;\n    text-decoration: none;\n}\n\n.subject {\n    cursor: pointer;\n    background-color: #fff;\n    font-size: 14px;\n    line-height: 1.4;\n    transition: background-color 0.3s;\n  }\n  \n  .subject:hover {\n    background-color: #dee7f9c8\n  }\n\n.green { border-left: 5px solid green; }\n.blue { border-left: 5px solid rgb(0, 68, 255); }\n.purple { border-left: 5px solid purple; }\n.cyan { border-left: 5px solid rgb(17, 4, 90); }\n\n.info-subject {\n    margin-bottom: 10px;\n    font-size: 30px;\n    font-weight: bold;\n}\n  \n.task_info_table {\n    display: grid;\n    padding: 6px;\n    grid-template-columns: 1fr 3fr;\n    gap: 5px;\n}\n\n.task_state {\n    min-height: 150px;\n    min-width: 200px;\n    background: #EDF3FE;\n    padding: 20px;\n    transition: all 0.3s ease;\n}\n\n.task_table {\n    display: grid;\n    min-width: 360px;\n    background: #EDF3FE;\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;\n    gap: 5px;\n}\n\n@media (max-width: 2300px) {\n    .task_table {\n      grid-template-columns: 1fr 1fr 1fr 1fr;\n    }\n}\n\n@media (max-width: 1500px) {\n    .task_table {\n      grid-template-columns: 1fr 1fr 1fr;\n    }\n    .task_state {\n        min-width: 300px;\n    }\n}\n\n@media (max-width: 1000px) {\n    .task_table {\n      grid-template-columns: 1fr 1fr;\n    }\n}\n\n@media (max-width: 900px) {\n    .task_table {\n      grid-template-columns: 1fr;\n      min-width: 200px;\n    }\n}\n\n@media (max-width: 810px) {\n    .task_info_table {\n        grid-template-columns: 1fr;\n    }\n}\n\n.task {\n    background: white;\n    padding: 20px;\n    border-radius: 10px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    min-height: 50px;\n    text-align: left;\n}\n\n.teacher-card {\n    background: white;\n    border-radius: 10px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding: 20px;\n    max-width: 500px;\n    margin: 0 auto;\n  }\n  \n  .teacher-title {\n    font-size: 18px;\n    font-weight: bold;\n    text-align: left;\n    margin: 0 0 15px 0;\n    padding-left: 10px;\n  }\n  \n  .teacher-info {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n  }\n  \n  .teacher-photo {\n    width: 100px;\n    height: 100px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin-right: 20px;\n  }\n  \n  .teacher-details {\n    flex: 1;\n    text-align: left;\n  }\n  \n  .teacher-details p {\n    margin: 5px 0;\n  }\n  \n  .msg-button {\n    margin-top: 10px;\n    background-color: #0017e2;\n    color: white;\n    border: none;\n    padding: 10px 20px;\n    border-radius: 8px;\n    cursor: pointer;\n    font-size: 14px;\n  }\n  \n  .msg-button:hover {\n    background-color: #3054b8;\n  }\n  \n  .hidden {\n    display: none;\n  }\n  \n  .lab-details {\n    background: white;\n    border-radius: 10px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding: 20px;\n    max-width: 500px;\n    margin: 0 auto;\n  }\n  \n  .lab-comment {\n    padding: 20px;\n  }\n\n.task-status {\n    font-size: 14px;\n    color: #f00; /* или другой цвет */\n    margin-top: 8px;\n  }\n  \n  /* Новый блок с заданием */\n  .assignment-details {\n    margin-top: 20px;\n  }\n  \n  .assignment-details .info-rectangle {\n    background: #EDF3FE;\n    border-radius: 10px;\n    padding: 20px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n  }\n  \n  /* Прогресс-бар (если не добавлены ранее) */\n  .progress-container {\n    background-color: #f3f3f3;\n    border-radius: 8px;\n    height: 10px;\n    width: 100%;\n    overflow: hidden;\n    margin-top: 10px;\n  }\n  \n  .progress-bar {\n    height: 100%;\n    background-color: #4caf50;\n    transition: width 1s ease;\n  }\n`;\n\nmsg.cssText = css;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 40,
+        "wires": [
+            [
+                "8269f2a4a554d9e6"
+            ]
+        ]
+    },
+    {
+        "id": "0736f6e8124b7f73",
+        "type": "http in",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "",
+        "url": "/schedule",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 960,
+        "y": 160,
+        "wires": [
+            [
+                "6b8cc300ad5f3b1b"
+            ]
+        ]
+    },
+    {
+        "id": "6b8cc300ad5f3b1b",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "Расписание",
+        "func": "msg.payload = {\n    \"year\": \"2024/2025\",\n    \"days\": [\n        { \"name\": \"Понедельник\", \"date\": \"17.02.25\" },\n        { \"name\": \"Вторник\", \"date\": \"18.02.25\" },\n        { \"name\": \"Среда\", \"date\": \"19.02.25\" },\n        { \"name\": \"Четверг\", \"date\": \"20.02.25\" },\n        { \"name\": \"Пятница\", \"date\": \"21.02.25\" },\n        { \"name\": \"Суббота\", \"date\": \"22.02.25\" }\n    ],\n    \"slots\": [\n        {\n            \"time\": \"08:00 - 09:35\",\n            \"subjects\": [\n                null, // Понедельник\n                {\n                    \"name\": \"Системы искусственного интеллекта\",\n                    \"teacher\": \"Солдатова Ольга Петровна\",\n                    \"type\": \"Лабораторная\",\n                    \"room\": \"507-14\"\n                }, // Вторник\n                null, // Среда\n                null, // Четверг\n                null, // Пятница\n                null, // Суббота\n            ] \n        },\n        {\n            \"time\": \"09:45 - 11:20\",\n            \"subjects\": [\n                {\n                    \"name\": \"Технологии проектирования\",\n                    \"teacher\": \"Мезенцева Екатерина Михайловна\",\n                    \"type\": \"Лекция\",\n                    \"platform\": \"online\",\n                    \"conference\": \"https://conference.example.com\"\n                },\n                {\n                    \"name\": \"Системы искусственного интеллекта\",\n                    \"teacher\": \"Солдатова Ольга Петровна\",\n                    \"type\": \"Лабораторная\",\n                    \"room\": \"507-14\"\n                }, {\n                    \"name\": \"Системное программирование\",\n                    \"teacher\": \"Привалов Александр Юрьевич\",\n                    \"type\": \"Лабораторная\",\n                    \"room\": \"407-14\"\n                }, null,\n                {\n                    \"name\": \"Использование Linux\",\n                    \"teacher\": \"Кузьмишина Татьяна Михайловна\",\n                    \"type\": \"Лабораторная\",\n                    \"room\": \"510-14\"\n                },\n                null\n            ]\n        },\n        {\n            \"time\": \"11:30 - 13:05\",\n            \"subjects\": [\n                {\n                    \"name\": \"Технологии проектирования\",\n                    \"teacher\": \"Мезенцева Екатерина Михайловна\",\n                    \"type\": \"Лекция\",\n                    \"platform\": \"online\",\n                    \"conference\": \"https://conference.example.com\"\n                },\n                null, {\n                    \"name\": \"Системное программирование\",\n                    \"teacher\": \"Привалов Александр Юрьевич\",\n                    \"type\": \"Лабораторная\",\n                    \"room\": \"407-14\"\n                }, {\n                    \"name\": \"ИТ-практикум\",\n                    \"teacher\": \"Сопченко Елена Вильевна\",\n                    \"type\": \"Практика\",\n                    \"room\": \"519-14\"\n                }, \n                {\n                    \"name\": \"Использование Linux\",\n                    \"teacher\": \"Кузьмишина Татьяна Михайловна\",\n                    \"type\": \"Лабораторная\",\n                    \"room\": \"510-14\"\n                }, null\n            ]\n        },\n        {\n            \"time\": \"13:30 - 15:05\",\n            \"subjects\": [\n                null, null, null, {\n                    \"name\": \"ИТ-практикум\",\n                    \"teacher\": \"Сопченко Елена Вильевна\",\n                    \"type\": \"Практика\",\n                    \"room\": \"519-14\"\n                }, null, null\n            ]\n        },\n        {\n            \"time\": \"15:15 - 16:50\",\n            \"subjects\": [\n                null, null, null, null, null, null\n            ]\n        },\n    ]\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1230,
+        "y": 160,
+        "wires": [
+            [
+                "f656923fe1ced9d7"
+            ]
+        ],
+        "icon": "font-awesome/fa-calendar"
+    },
+    {
+        "id": "f656923fe1ced9d7",
+        "type": "http response",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1450,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "98a258e7e35f42a8",
+        "type": "file in",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "logo_osnovnoy.png ",
+        "filename": "/home/dima/SsauWorkspace/hahaton_exemple_fronted/logo_osnovnoy.png",
+        "filenameType": "str",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 1245.000033378601,
+        "y": 100.99998569488525,
+        "wires": [
+            [
+                "2085a41933487b98"
+            ]
+        ],
+        "icon": "font-awesome/fa-image"
+    },
+    {
+        "id": "2085a41933487b98",
+        "type": "http response",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1445.000033378601,
+        "y": 100.99998569488525,
+        "wires": []
+    },
+    {
+        "id": "953d496356877e9a",
+        "type": "http in",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "",
+        "url": "/logo_osnovnoy.png",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 990,
+        "y": 100,
+        "wires": [
+            [
+                "98a258e7e35f42a8"
+            ]
+        ]
+    },
+    {
+        "id": "eb6104075409be7d",
+        "type": "http in",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "",
+        "url": "/subject",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "3043fb2166b3eba3"
+            ]
+        ]
+    },
+    {
+        "id": "3043fb2166b3eba3",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "css",
+        "func": "var css = `\nbody {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 0;\n    height: 1200px;\n    background-color: #edf3fec1;\n}\n\n.topbar {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%; \n    height: 80px;\n    background-color: #fff;\n    color: white;\n    display: flex;\n    align-items: center;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding-left: 20px;\n    z-index: 1;\n}\n\n\n.sidebar {\n    width: 45px;\n    height: 100%;\n    background-color: #fff;\n    color: white;\n    position: fixed;\n    top: 0;\n    left: 0;\n    transition: width 0.3s;\n    overflow: visible;\n    white-space: nowrap;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding: 10px;\n    z-index: 10;\n}\n\n.sidebar.expanded1 {\n    width: 340px;\n    transition: width 0.7s ease; \n}\n\n.sidebar:hover {\n    width: 340px;\n    transition: width 0.7s ease; \n}\n\n.toggle-btn {\n    cursor: pointer;\n    text-align: center;\n    padding: 10px;\n    background-color: #EDF3FE;\n    border: none;\n    color: white;\n    width: 33px;\n    height: 33px;\n    border-radius: 50%;\n    outline: none;\n    position: absolute;\n    left: 82%;\n    top: 40px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding: 10px;\n}\n\n.toggle-btn.expanded1 {\n    transform: rotate(180deg);\n}\n\n.toggle-btn img {\n    width: 100%;\n    height: 100%;\n    object-fit: contain;\n    display: block;\n    transition: transform 0.2s ease;\n}\n\n.button-list {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n}\n\n.button-list li {\n    display: flex;\n    align-items: center;\n    padding: 10px;\n}\n\n.button-list li img {\n    width: 24px;\n    height: 24px;\n    margin-right: 10px;\n}\n\n.button-list li:hover {\n    background-color: #555;\n}\n\n.text {\n    display: none;\n}\n\n.sidebar.expanded .text {\n    display: inline;\n}\n\n.sidebar:hover .text {\n    display: inline;\n}\n\n.logo {\n    width: 30px;\n    height: auto;\n    left: 84%;\n}\n\n.logo.small {\n    width: 300px;\n    height: auto;\n    transition: width 0.5s ease; \n}\n\n.logocenter {\n    border: 5px solid;\n    position: absolute;\n    top: 45px;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    padding: 10px;\n}\n\n.logocenter.small {\n    border: 6px solid;\n    position: absolute;\n    top: 110px;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    padding: 10px;\n}\n\n.logoname {\n    width: 230px;\n    height: auto;\n}\n\n.divlogoname {\n    height: auto;\n    position: absolute;\n    top: 20px;\n    left: 80px;\n    padding: 10px;\n}\n\n.menu {\n    list-style: none;\n    position: absolute;\n    color: black;\n    top: 60px;\n    width: 95%;\n    padding: 0;\n    margin: 40px 0 0 0;\n    transition: transform 0.7s ease;\n}\n\n.menu.small {\n    list-style: none;\n    position: absolute;\n    color: black;\n    top: 170px;\n    width: 95%;\n    padding: 0;\n    margin: 40px 0 0 0;\n}\n\n.menu li {\n    display: flex;\n    align-items: center;\n    padding: 12px;\n    cursor: pointer;\n    transition: background 0.6s;\n}\n\n.menu li:hover {\n    background: #EDF3FE;\n}\n\n.icon {\n    width: 24px;\n    height: 24px;\n    margin-right: 40px;\n}\n\n.text {\n    display: inline-block; \n    opacity: 0;\n    transition: opacity 0.3s ease 0.8s;\n    font-size: 18px;\n}\n\n.sidebar:not(.expanded1) .menu li,\n.sidebar:hover:not(.expanded1) .menu li {\n    justify-content: left;\n}\n\n.sidebar:not(.expanded1) .text {\n    opacity: 0;\n    visibility: hidden;\n}\n\n.sidebar.expanded1 .menu li,\n.sidebar:hover .menu li {\n    \n    ustify-content: flex-start;\n    padding-left: 5px;\n}\n\n.sidebar.expanded1 .text,\n.sidebar:hover .text {\n    opacity: 1;\n    visibility: visible;\n    transition-delay: 0.8s;\n}\n\n.main_content {\n    top: 105px;\n    position: relative;\n    color: black;\n    margin-top: 10px;\n    margin-left: 100px;\n    padding: 2px;\n    transition: margin-left 0.3s ease;\n  }\n  \n  .sidebar.expanded1 ~ .main_content {\n    margin-left: 400px;\n  }\n  \n.info-box {\n    text-align: center;\n}\n  \n.info-label {\n    margin-bottom: 10px;\n    font-size: 18px;\n    font-weight: bold;\n}\n  \n.info-rectangle {\n    width: 98%;\n    padding-right: -100px;\n    background-color: #fcfcfc;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    border-radius: 10px;\n}\n\n.table {\n    display: grid;\n    padding: 5px;\n    grid-template-columns: 6.5vw 1fr 1fr 1fr 1fr 1fr 1fr;\n    gap: 5px;\n}\n\n.row {\n    display: contents;\n}\n\n.cell {\n    background: white;\n    padding: 20px;\n    border-radius: 10px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    min-height: 30px;\n    text-align: left;\n}\n\n.header-row .cell {\n    background: #EDF3FE;\n    font-weight: bold;\n    text-align: center;\n}\n\n.time {\n    font-weight: bold;\n    background: #EDF3FE;\n    padding: 20px;\n}\n\n.subject a {\n    color: blue;\n    text-decoration: none;\n}\n\n.subject {\n    cursor: pointer;\n    background-color: #fff;\n    font-size: 14px;\n    line-height: 1.4;\n    transition: background-color 0.3s;\n  }\n  \n  .subject:hover {\n    background-color: #dee7f9c8\n  }\n\n.green { border-left: 5px solid green; }\n.blue { border-left: 5px solid rgb(0, 68, 255); }\n.purple { border-left: 5px solid purple; }\n.red { border-left: 5px solid rgb(133, 6, 6); }\n.cyan { border-left: 5px solid rgb(17, 4, 90); }\n\n.info-subject {\n    margin-bottom: 10px;\n    font-size: 30px;\n    font-weight: bold;\n}\n  \n.task_info_table {\n    display: grid;\n    padding: 6px;\n    grid-template-columns: 1fr 3fr;\n    gap: 5px;\n}\n\n@media (max-width: 1000px) {\n    .task_info_table {\n      grid-template-columns: 1.9fr 2fr;\n    }\n}\n\n@media (max-width: 1600px) {\n    .task_info_table {\n      grid-template-columns: 1.7fr 3fr;\n    }\n}\n\n@media (max-width: 1300px) {\n    .task_info_table {\n      grid-template-columns: 1fr 3fr;\n    }\n}\n\n@media (max-width: 850px) {\n    .task_info_table {\n      grid-template-columns: 3fr 1fr;\n    }\n}\n\n\n.task_state {\n    min-height: 150px;\n    background: #EDF3FE;\n    padding: 20px;\n    transition: all 0.3s ease;\n}\n\n.task_table {\n    display: grid;\n    min-width: 360px;\n    background: #EDF3FE;\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;\n    gap: 5px;\n}\n\n@media (max-width: 2300px) {\n    .task_table {\n      grid-template-columns: 1fr 1fr 1fr 1fr;\n    }\n}\n\n@media (max-width: 1500px) {\n    .task_table {\n      grid-template-columns: 1fr 1fr 1fr;\n    }\n    .task_state {\n        min-width: 300px;\n    }\n}\n\n@media (max-width: 1000px) {\n    .task_table {\n      grid-template-columns: 1fr 1fr;\n    }\n}\n\n@media (max-width: 900px) {\n    .task_table {\n      grid-template-columns: 1fr;\n      min-width: 200px;\n    }\n}\n\n@media (max-width: 810px) {\n    .task_info_table {\n        grid-template-columns: 1fr;\n    }\n}\n\n.task {\n    background: white;\n    padding: 20px;\n    border-radius: 10px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    min-height: 50px;\n    text-align: left;\n}\n\n.teacher-card {\n    background: white;\n    border-radius: 10px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding: 20px;\n    max-width: 600px;\n    min-width: 300px;\n    margin: 0 auto;\n  }\n  \n  .teacher-title {\n    font-size: 18px;\n    font-weight: bold;\n    text-align: left;\n    margin: 0 0 15px 0;\n    padding-left: 10px;\n  }\n  \n  .teacher-info {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n  }\n  \n  .teacher-photo {\n    width: 100px;\n    height: 100px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin-right: 20px;\n  }\n  \n  .teacher-details {\n    flex: 1;\n    text-align: left;\n  }\n  \n  .teacher-details p {\n    margin: 5px 0;\n  }\n  \n  .msg-button {\n    margin-top: 10px;\n    background-color: #0017e2;\n    color: white;\n    border: none;\n    padding: 10px 20px;\n    border-radius: 8px;\n    cursor: pointer;\n    font-size: 14px;\n  }\n  \n  .msg-button:hover {\n    background-color: #3054b8;\n  }\n  \n  .hidden {\n    display: none;\n  }\n  \n  .lab-details {\n    background: white;\n    border-radius: 10px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding: 20px;\n    max-width: 500px;\n    margin: 0 auto;\n  }\n  \n  .lab-comment {\n    padding: 20px;\n  }\n\n.task-status {\n    font-size: 14px;\n    color: #f00;\n    margin-top: 8px;\n  }\n  \n  .assignment-details {\n    position: relative;\n    color: black;\n    margin-top: 10px;\n    transition: margin-left 0.3s ease;\n  }\n  \n  .progress-container {\n    background-color: #f3f3f3;\n    border-radius: 8px;\n    height: 10px;\n    overflow: hidden;\n    margin-top: 10px;\n  }\n  \n  .progress-bar {\n    height: 100%;\n    background-color: #4caf50;\n    transition: width 1s ease;\n  }\n.task_p {\n  padding: 30px;\n}\n`;\n\nmsg.cssText = css;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 100,
+        "wires": [
+            [
+                "6ad66adbfcccd7fe"
+            ]
+        ]
+    },
+    {
+        "id": "6ad66adbfcccd7fe",
+        "type": "template",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "Внешний вид предмета",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"ru\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title id=\"subjectTitle\">Информация о предмете</title>\n    <style>\n      {{{cssText}}}\n    </style>\n    <link rel=\"icon\" type=\"image/png\" href=\"https://cabinet.ssau.ru/asset/favicon.ico\">\n</head>\n<body>\n    <header class=\"topbar\">\n        <div class=\"divlogoname\"><img src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logoname.png\" class=\"logoname\"></div>\n    </header>\n\n    <div class=\"sidebar\" id=\"sidebar\">\n        <div class=\"logocenter\" id=\"logocenter\">\n            <img src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logo_osnovnoy_small.png\" class=\"logo\" id=\"logo\">\n        </div>\n        <button class=\"toggle-btn\" id=\"toggleBtn\">\n        <img src=\"https://github.com/Kulakov1Dima/SsauWorkspace/blob/main/hahaton_exemple_fronted/expand.png?raw=true\">\n    </button>\n        <ul class=\"menu\" id=\"menu\">\n            <li>\n                <img src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/home1.png\" class=\"icon\">\n                <span class=\"text\">Главная</span>\n            </li>\n            <li>\n                <img src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/messenger.png\" class=\"icon\">\n                <span class=\"text\">Мессенджер</span>\n            </li>\n            <li onclick=\"location.href='http://ibook.daa2557bc9hb3.keenetic.pro/ssau';\" style=\"cursor:pointer;\">\n                <img src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/schedule.png\" class=\"icon\">\n                <span class=\"text\">Расписание</span>\n            </li>\n        </ul>\n    </div>\n    \n    <div class=\"main_content\">\n        <div class=\"info-subject\"></div>\n          <div class=\"info-rectangle\">\n            <div class=\"task_info_table\">\n              <div class=\"row\">\n                <div class=\"cell task_state\">\n\n                  <div class=\"lab-details hidden\">\n                    <div class=\"info-rectangle\">\n                      <div class=\"lab-comment\">\n                        <h3>Комментарий преподавателя</h3>\n                        <p id=\"labComment\"></p>\n                        <h4>Статус: <span id=\"labStatus\"></span></h4>\n                        <div class=\"progress-container\">\n                          <div class=\"progress-bar\" id=\"labProgressBar\" style=\"width: 0%\"></div>\n                        </div>\n                      </div>\n                    </div>\n                  </div>\n\n                  <div class=\"teacher-card\">\n                    <h4 class=\"teacher-title\">Ваш преподаватель</h4>\n                    <div class=\"teacher-info\">\n                      <img src=\"https://cdn-icons-png.flaticon.com/512/4837/4837857.png\" alt=\"Преподаватель\" class=\"teacher-photo\" id=\"teacherPhoto\">\n                      <div class=\"teacher-details\">\n                        <p id=\"teacherName\"></p>\n                        <p>Email: <a href=\"mailto:ivanov@example.com\" id=\"teacherEmail\"></a></p>\n                        <button class=\"msg-button\">Написать сообщение</button>\n                      </div>\n                    </div>\n                  </div>\n\n                  <p id=\"subjectDescription\"></p>\n\n                </div>\n                <div class=\"cell task_state\">\n                  <div class=\"task_table\" id=\"taskTable\">\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n    </div>\n\n    <script>\n    const imagesToPreload = [\n    \"http://ibook.daa2557bc9hb3.keenetic.pro/logo_osnovnoy.png\",\n    \"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logo_osnovnoy_small.png\"\n    ];\n    \n    imagesToPreload.forEach(src => {\n    const img = new Image();\n    img.src = src;\n    });\n    \n    const sidebar = document.getElementById('sidebar');\n    const toggleBtn = document.getElementById('toggleBtn');\n    const logo = document.getElementById('logo');\n    const logocenter = document.getElementById('logocenter');\n    const menu = document.getElementById('menu');\n\n    toggleBtn.addEventListener('click', () => {\n        if (!toggleBtn.classList.contains('expanded1')) {\n            toggleBtn.classList.add('expanded1');\n            sidebar.classList.add('expanded1');\n        }\n        else{\n            toggleBtn.classList.remove('expanded1');\n            sidebar.classList.remove('expanded1');\n        }\n    });\n\n    sidebar.addEventListener('mouseenter', () => {\n        logo.src = 'http://ibook.daa2557bc9hb3.keenetic.pro/logo_osnovnoy.png';\n        logo.classList.add('small');\n        logocenter.classList.add('small');\n        menu.classList.add('small');\n    });\n\n    sidebar.addEventListener('mouseleave', () => {\n        if (!sidebar.classList.contains('expanded1')) {\n            logo.src = 'https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logo_osnovnoy_small.png';\n            logo.classList.remove('small');\n            logocenter.classList.remove('small');\n            menu.classList.remove('small');\n        }\n    });\n    \n    document.addEventListener('DOMContentLoaded', () => {\n      const tasks = document.querySelectorAll('.task');\n      const teacherCard = document.querySelector('.teacher-card');\n      const labDetails = document.querySelector('.lab-details');\n      const labComment = document.getElementById('labComment');\n      const labStatus = document.getElementById('labStatus');\n      const labProgressBar = document.getElementById('labProgressBar');\n      const taskTable = document.getElementById('taskTable');\n\n      taskTable.addEventListener('click', async (event) => {\n        const task = event.target.closest('.task');\n        if (!task) return;\n\n        const labId = task.dataset.labId;\n        if (!labId) return;\n        try {\n          const response = await fetch(`http://ibook.daa2557bc9hb3.keenetic.pro/lab/${labId}`);\n          const labData = await response.json();\n\n          labComment.textContent = labData.comment;\n          labStatus.textContent = labData.status;\n          labProgressBar.style.width = `${labData.progress}%`;\n\n          labDetails.classList.remove('hidden');\n          teacherCard.classList.add('hidden');\n\n          let existingAssignment = document.querySelector('.assignment-details');\n          if (!existingAssignment) {\n            existingAssignment = document.createElement('div');\n            existingAssignment.className = 'assignment-details main_content';\n            document.body.appendChild(existingAssignment);\n          }\n\n          let taskWithConsole = labData.task;\n          if (taskWithConsole.includes('[[CONSOLE]]')) {\n            const consoleHTML = `<iframe src=\"http://ibook.daa2557bc9hb3.keenetic.pro:8000/\" style=\"width:100%; height:480px; border:none; margin-top:20px;\"></iframe>`;\n            taskWithConsole = taskWithConsole.replace('[[CONSOLE]]', consoleHTML);\n          }\n          if (taskWithConsole.includes('[[PYTHON]]')) {\n            const consoleHTML = `<iframe src=\"http://ibook.daa2557bc9hb3.keenetic.pro:8888/notebooks/test_jupyter/Untitled.ipynb\" style=\"width:100%; height:480px; border:none; margin-top:20px;\"></iframe>`;\n            taskWithConsole = taskWithConsole.replace('[[PYTHON]]', consoleHTML);\n          }\n\nexistingAssignment.innerHTML = `\n<div class=\"assignment-details\">\n  <div class=\"info-rectangle\">\n    <div class=\"task_p\">\n      <h3>Задание лабораторной работы</h3>\n      <p>${taskWithConsole}</p>\n      <p>Статус: <span class=\"assignment-status\">${labData.status}</span></p>\n      <div class=\"progress-container\">\n        <div class=\"progress-bar\" style=\"width: ${labData.progress}%;\"></div>\n      </div>\n    </div>\n  </div>\n</div>\n`;\n} catch (error) {\nconsole.error('Ошибка при загрузке данных:', error);\n}\n});\n\n  const urlParams = new URLSearchParams(window.location.search);\n  let subjectName = urlParams.get('name');\n\n  if (!subjectName || subjectName === \"null\") {\n    window.location.href = 'error.html';\n  } else {\n    const infoLabel = document.querySelector('.info-subject');\n    infoLabel.textContent = subjectName;\n    document.getElementById(\"subjectTitle\").textContent = subjectName;\n    document.getElementById(\"subjectDescription\").textContent = `Здесь могла бы быть подробная информация о предмете «${subjectName}».`;\n\n    const defaultTeacher = {\n      name: \"Не найден\",\n      email: \"null\",\n      photo: \"https://cdn-icons-png.flaticon.com/512/4837/4837857.png\"\n    };\n\n    fetch(`http://ibook.daa2557bc9hb3.keenetic.pro/teacher${encodeURIComponent(subjectName)}`)\n      .then(response => response.json())\n      .then(data => {\n        document.getElementById('teacherPhoto').src = data.photo || defaultTeacher.photo;\n        document.getElementById('teacherName').textContent = data.name || defaultTeacher.name;\n        document.getElementById('teacherEmail').href = `mailto:${data.email || defaultTeacher.email}`;\n        document.getElementById('teacherEmail').textContent = data.email || defaultTeacher.email;\n      })\n      .catch(error => {\n        console.error('Ошибка получения данных преподавателя:', error);\n        document.getElementById('teacherPhoto').src = defaultTeacher.photo;\n        document.getElementById('teacherName').textContent = defaultTeacher.name;\n        document.getElementById('teacherEmail').href = `mailto:${defaultTeacher.email}`;\n        document.getElementById('teacherEmail').textContent = defaultTeacher.email;\n      });\n\n    fetch(`http://ibook.daa2557bc9hb3.keenetic.pro/labs/${encodeURIComponent(subjectName)}`)\n      .then(response => response.json())\n      .then(data => {\n        data.forEach(lab => {\n          const labDiv = document.createElement('div');\n          labDiv.className = 'task subject';\n          labDiv.dataset.labId = lab.id;\n\n          if (lab.status === \"Сдано\") {\n            labDiv.classList.add('green');\n          } else if (lab.status === \"Не сдано\") {\n            labDiv.classList.add('red');\n          } else if (lab.status === \"В процессе\") {\n            labDiv.classList.add('blue');\n          }\n\n          labDiv.innerHTML = `\n            <b>${lab.title}</b><br>\n            <span>Статус: ${lab.status}</span>\n          `;\n          taskTable.appendChild(labDiv);\n        });\n      })\n      .catch(error => {\n        console.error('Ошибка при загрузке данных:', error);\n      });\n  }\n});\n  </script>\n</body>\n</html>",
+        "output": "str",
+        "x": 510,
+        "y": 100,
+        "wires": [
+            [
+                "db4560c7c2073a98"
+            ]
+        ],
+        "icon": "node-red/parser-html.svg"
+    },
+    {
+        "id": "db4560c7c2073a98",
+        "type": "http response",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 750,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "acc184a576fc1127",
+        "type": "http in",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "",
+        "url": "/labs/:subject_name",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 990,
+        "y": 280,
+        "wires": [
+            [
+                "e94ef20631abe1fc"
+            ]
+        ]
+    },
+    {
+        "id": "e94ef20631abe1fc",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "Получение лабораторных",
+        "func": "const subjectName = msg.req.params.subject_name;\n\nmsg.topic = \"SELECT id, title, status FROM labs WHERE subject_name = \\\"\" + subjectName +\"\\\"\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1280,
+        "y": 280,
+        "wires": [
+            [
+                "eed8cf825b35c359"
+            ]
+        ]
+    },
+    {
+        "id": "9a455b26f95f9217",
+        "type": "inject",
+        "z": "96b3a7bdffc02a46",
+        "g": "3bebb74761a81a08",
+        "name": "Создать БД",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 260,
+        "wires": [
+            [
+                "37a5db43ab28624b"
+            ]
+        ]
+    },
+    {
+        "id": "37a5db43ab28624b",
+        "type": "sqlite",
+        "z": "96b3a7bdffc02a46",
+        "g": "3bebb74761a81a08",
+        "mydb": "d3f44785a6cfb327",
+        "sqlquery": "fixed",
+        "sql": "/*\nЗа раз можно сделать одну таблицу,\nпоэтому комментируй остальное\n */\nCREATE TABLE labs (\n    id INTEGER PRIMARY KEY,\n    subject_name TEXT,\n    title TEXT,\n    progress INTEGER,\n    status TEXT,\n    comment TEXT,\n    task TEXT\n);",
+        "name": "labs",
+        "x": 370,
+        "y": 260,
+        "wires": [
+            [
+                "9baf928dbb049ac3"
+            ]
+        ]
+    },
+    {
+        "id": "9baf928dbb049ac3",
+        "type": "debug",
+        "z": "96b3a7bdffc02a46",
+        "g": "3bebb74761a81a08",
+        "name": "mes",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "bf0f4b0d9a068070",
+        "type": "inject",
+        "z": "96b3a7bdffc02a46",
+        "g": "3bebb74761a81a08",
+        "name": "Вывод списка БД",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT name FROM sqlite_master WHERE type='table';",
+        "x": 170,
+        "y": 320,
+        "wires": [
+            [
+                "11b0ed92c47dea77"
+            ]
+        ]
+    },
+    {
+        "id": "eed8cf825b35c359",
+        "type": "sqlite",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "mydb": "d3f44785a6cfb327",
+        "sqlquery": "msg.topic",
+        "sql": "/*\nЗа раз можно сделать одну таблицу,\nпоэтому комментируй остальное\n */\nCREATE TABLE labs (\n    id INTEGER PRIMARY KEY,\n    subject_name TEXT,\n    title TEXT,\n    status TEXT,\n    message TEXT\n);",
+        "name": "labs",
+        "x": 1510,
+        "y": 280,
+        "wires": [
+            [
+                "0c36d0543db77def"
+            ]
+        ]
+    },
+    {
+        "id": "0c36d0543db77def",
+        "type": "http response",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1670,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "11b0ed92c47dea77",
+        "type": "sqlite",
+        "z": "96b3a7bdffc02a46",
+        "g": "3bebb74761a81a08",
+        "mydb": "d3f44785a6cfb327",
+        "sqlquery": "msg.topic",
+        "sql": "SELECT name FROM sqlite_master WHERE type='table';",
+        "name": "labs",
+        "x": 370,
+        "y": 320,
+        "wires": [
+            [
+                "f423a171433e2d78"
+            ]
+        ]
+    },
+    {
+        "id": "f423a171433e2d78",
+        "type": "debug",
+        "z": "96b3a7bdffc02a46",
+        "g": "3bebb74761a81a08",
+        "name": "mes",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5280bffcb685a08c",
+        "type": "inject",
+        "z": "96b3a7bdffc02a46",
+        "g": "3bebb74761a81a08",
+        "name": "Удалить таблицу",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE labs",
+        "x": 160,
+        "y": 380,
+        "wires": [
+            [
+                "11b0ed92c47dea77"
+            ]
+        ]
+    },
+    {
+        "id": "a029268e80a98e77",
+        "type": "http in",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "",
+        "url": "/teacher:subject_name",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 1000,
+        "y": 220,
+        "wires": [
+            [
+                "7f16958aef058167"
+            ]
+        ]
+    },
+    {
+        "id": "7f16958aef058167",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "Преподователь",
+        "func": "const subjectName = msg.req.params.subject_name;\n\nswitch (subjectName) {\n    case \"Системы искусственного интеллекта\":\n        msg.payload = {\n            \"name\": \"Солдатова Ольга Петровна\",\n            \"email\": \"soldatova.op@ssau.ru\",\n            \"photo\": \"http://cabinet.ssau.ru/assets/staff_photo/soldatova_o_p.jpg\"\n        };\n        break;\n    case \"Технологии проектирования\":\n        msg.payload = {\n            \"name\": \"Мезенцева Екатерина Михайловна\",\n            \"email\": \"mezenceva.em@ssau.ru\",\n            \"photo\": \"https://cabinet.ssau.ru/storage/photos/photo-813397191-63386c803b2e7.jpg\"\n        };\n        break;\n    case \"Системное программирование\":\n        msg.payload = {\n            \"name\": \"Привалов Александр Юрьевич\",\n            \"email\": \"privalov.ayu@ssau.ru\",\n            \"photo\": null\n        };\n        break;\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 220,
+        "wires": [
+            [
+                "9c027dd27a1cc616"
+            ]
+        ],
+        "icon": "font-awesome/fa-user-circle-o"
+    },
+    {
+        "id": "9c027dd27a1cc616",
+        "type": "http response",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1450,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "9744101294d8caf9",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "ввод данных",
+        "func": "let id = 2,\n    subject_name = \"Системное программирование\",\n    title = \"Лабораторная работа №2\",\n    status = \"Не сдано\",\n    progress = 0,\n    comment = \"\",\n    task = \"задача\";\n\nmsg.topic = `insert into labs(id, subject_name, title, status, progress, comment, task) values ('${id}', '${subject_name}', '${title}', '${status}', '${progress}', '${comment}', '${task}')`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 480,
+        "wires": [
+            [
+                "cc9fd80defe950bd"
+            ]
+        ]
+    },
+    {
+        "id": "5b03cc4f0f3662e0",
+        "type": "inject",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "Добавить данные",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 480,
+        "wires": [
+            [
+                "9744101294d8caf9"
+            ]
+        ]
+    },
+    {
+        "id": "cc9fd80defe950bd",
+        "type": "sqlite",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "mydb": "d3f44785a6cfb327",
+        "sqlquery": "msg.topic",
+        "sql": "SELECT name FROM sqlite_master WHERE type='table';",
+        "name": "",
+        "x": 560,
+        "y": 480,
+        "wires": [
+            [
+                "b72770f5f66754f0"
+            ]
+        ]
+    },
+    {
+        "id": "b72770f5f66754f0",
+        "type": "debug",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "mes",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "dc0cc6ffbeb485d9",
+        "type": "inject",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "Вывод лаб",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 560,
+        "wires": [
+            [
+                "c0e25c16365c43ba"
+            ]
+        ]
+    },
+    {
+        "id": "c0e25c16365c43ba",
+        "type": "sqlite",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "mydb": "d3f44785a6cfb327",
+        "sqlquery": "fixed",
+        "sql": "select * from labs",
+        "name": "",
+        "x": 300,
+        "y": 560,
+        "wires": [
+            [
+                "338d55922913d74e"
+            ]
+        ]
+    },
+    {
+        "id": "338d55922913d74e",
+        "type": "debug",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "mes",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "ccb2d0996d6afc01",
+        "type": "inject",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "Удалить из БД",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "1",
+        "x": 160,
+        "y": 640,
+        "wires": [
+            [
+                "89f1527c88a16070"
+            ]
+        ]
+    },
+    {
+        "id": "89f1527c88a16070",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "Команда",
+        "func": "if (msg.topic == \"all\") {\n    msg.topic = \"DELETE FROM labs\";\n}\nelse if (msg.topic){//удалить по id\n    msg.topic = `DELETE FROM labs WHERE id = '${msg.topic}'`;\n}\nelse {\n    msg.topic = \"SELECT 'msg.topic пуст' AS text\";\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 640,
+        "wires": [
+            [
+                "fbc0935fca15c593"
+            ]
+        ]
+    },
+    {
+        "id": "fbc0935fca15c593",
+        "type": "sqlite",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "mydb": "d3f44785a6cfb327",
+        "sqlquery": "msg.topic",
+        "sql": "DELETE FROM hourly_stats",
+        "name": "",
+        "x": 500,
+        "y": 640,
+        "wires": [
+            [
+                "0dbc483a7322a35d"
+            ]
+        ]
+    },
+    {
+        "id": "0dbc483a7322a35d",
+        "type": "debug",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "mes",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "48702177fc9e6139",
+        "type": "inject",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "Изменить задачу",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 720,
+        "wires": [
+            [
+                "904e73cc4417f2b4"
+            ]
+        ]
+    },
+    {
+        "id": "904e73cc4417f2b4",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "ввод id и task",
+        "func": "let task = `1. Начальные сведения о файловой системе Linux(часть 1).<br />\n2. Основы работы с файловой системой в командной оболочке.<br />\n3. Основы работы с компилятором gcc.<br />\n4. Системные вызовы и функции для работы с файловой системой.<br />\n<h3>Начальные сведения о файловой системе Linux (часть 1)</h3><br />\nВся информация, хранящаяся в компьютере, организована в файлы - именованные\nобласти данных на носителе информации. Также, во многих операционных системах (в том\nчисле в Linux) в виде работы с файлами организован и доступ к другим ресурсам, например,\nустройствам ввода-вывода.\nВсе файлы, доступные в операционной системе Linux, объединяются в единую\nдревовидную (имеющую вид направленного дерева – связного направленного графа без циклов)\nлогическую структуру. Ветками этого дерева (узлами, из которых могут исходить дуги)\nявляются специальные файлы, называемые директориями (каталогами, папками). Из них\nмогут исходить дуги к другим файлам - как к другим директориям, так и к файлам, хранящим\nразличные данные (регулярным файлам). Регулярные файлы являются листьями дерева -\nузлами, из которых не исходят дуги. Принято говорить, что директория включает в себя все\nфайлы, к которым из неё исходят дуги (или, что все такие файлы входят в данную\nдиректорию, находятся в данной директории).\nКаждому файлу (как регулярному, так и директории) должно быть присвоено имя. Оно не\nдолжно быть длиннее 255 символов (в других версиях 13 символов), не должно содержать\nсимвол с нулевым кодом (NUL) и символ ‘/’ (слэш). Также не рекомендуется использовать в\nименах файлов символы ‘*’, ‘?’, ‘\\’ (обратный слэш), кавычки и пробел. Файлы должны иметь\nуникальное имя в пределах той директории, в которую они входят. В отличие от Windows,\nLinux различает регистр символов, входящих в имя файла.\nОсобым случаем является корень дерева – единственная директория, не входящая ни в\nкакую другую. Её имя всегда «/» (единственное исключение из правила именования файлов).\nЕсли имя файла начинается с символа ‘.’, такой файл считается скрытым. <br /> [[CONSOLE]] <br /> <br /> <br /> [[PYTHON]]`,\nid = 1;\nmsg.topic = `UPDATE labs\nSET task = '${task}'\nWHERE id = ${id};`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 720,
+        "wires": [
+            [
+                "054a160dfa0fc805"
+            ]
+        ]
+    },
+    {
+        "id": "054a160dfa0fc805",
+        "type": "sqlite",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "mydb": "d3f44785a6cfb327",
+        "sqlquery": "msg.topic",
+        "sql": "SELECT name FROM sqlite_master WHERE type='table';",
+        "name": "",
+        "x": 560,
+        "y": 720,
+        "wires": [
+            [
+                "3c34c5b62d73b464"
+            ]
+        ]
+    },
+    {
+        "id": "3c34c5b62d73b464",
+        "type": "debug",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "mes",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "c56c1a15591db573",
+        "type": "inject",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "Изменить статус",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 780,
+        "wires": [
+            [
+                "ee744ce133eb65d6"
+            ]
+        ]
+    },
+    {
+        "id": "ee744ce133eb65d6",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "ввод id и task",
+        "func": "let status = \"Сдано\",\nid = 2;\nmsg.topic = `UPDATE labs\nSET status = '${status}'\nWHERE id = ${id};`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 780,
+        "wires": [
+            [
+                "daad2982dcaf9457"
+            ]
+        ]
+    },
+    {
+        "id": "daad2982dcaf9457",
+        "type": "sqlite",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "mydb": "d3f44785a6cfb327",
+        "sqlquery": "msg.topic",
+        "sql": "SELECT name FROM sqlite_master WHERE type='table';",
+        "name": "",
+        "x": 560,
+        "y": 780,
+        "wires": [
+            [
+                "c072070b9ccdf767"
+            ]
+        ]
+    },
+    {
+        "id": "c072070b9ccdf767",
+        "type": "debug",
+        "z": "96b3a7bdffc02a46",
+        "g": "4a9709e51fb4d4ca",
+        "name": "mes",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "6bd9fdcda1dda3e7",
+        "type": "http in",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "",
+        "url": "/lab/:lab_id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 960,
+        "y": 340,
+        "wires": [
+            [
+                "a2b7d415a98b5d0f"
+            ]
+        ]
+    },
+    {
+        "id": "a2b7d415a98b5d0f",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "Получение лабораторных",
+        "func": "const lab_id = msg.req.params.lab_id;\n\nmsg.topic = \"SELECT * FROM labs WHERE id = \\\"\" + lab_id + \"\\\"\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1280,
+        "y": 340,
+        "wires": [
+            [
+                "43c91f459a58a328"
+            ]
+        ]
+    },
+    {
+        "id": "43c91f459a58a328",
+        "type": "sqlite",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "mydb": "d3f44785a6cfb327",
+        "sqlquery": "msg.topic",
+        "sql": "/*\nЗа раз можно сделать одну таблицу,\nпоэтому комментируй остальное\n */\nCREATE TABLE labs (\n    id INTEGER PRIMARY KEY,\n    subject_name TEXT,\n    title TEXT,\n    status TEXT,\n    message TEXT\n);",
+        "name": "labs",
+        "x": 1510,
+        "y": 340,
+        "wires": [
+            [
+                "9b30b95168626b36"
+            ]
+        ]
+    },
+    {
+        "id": "9aa00395d33b40c5",
+        "type": "http response",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1830,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "9b30b95168626b36",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "a18ab01cd2004dcd",
+        "name": "[0]",
+        "func": "msg.payload = msg.payload[0];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1670,
+        "y": 340,
+        "wires": [
+            [
+                "9aa00395d33b40c5"
+            ]
+        ]
+    },
+    {
+        "id": "91454e29df862af1",
+        "type": "http in",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "",
+        "url": "/messenger",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "ee21ea178bdc7e8e"
+            ]
+        ]
+    },
+    {
+        "id": "ee21ea178bdc7e8e",
+        "type": "function",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "css",
+        "func": "var css = `\nbody {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 0;\n    height: 1200px;\n    background-color: #edf3fec1;\n}\n\n.topbar {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%; \n    height: 80px;\n    background-color: #fff;\n    color: white;\n    display: flex;\n    align-items: center;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding-left: 20px;\n    z-index: 1;\n}\n\n\n.sidebar {\n    width: 45px;\n    height: 100%;\n    background-color: #fff;\n    color: white;\n    position: fixed;\n    top: 0;\n    left: 0;\n    transition: width 0.3s;\n    overflow: visible;\n    white-space: nowrap;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding: 10px;\n    z-index: 10;\n}\n\n.sidebar.expanded1 {\n    width: 340px;\n    transition: width 0.7s ease; \n}\n\n.sidebar:hover {\n    width: 340px;\n    transition: width 0.7s ease; \n}\n\n.toggle-btn {\n    cursor: pointer;\n    text-align: center;\n    padding: 10px;\n    background-color: #EDF3FE;\n    border: none;\n    color: white;\n    width: 33px;\n    height: 33px;\n    border-radius: 50%;\n    outline: none;\n    position: absolute;\n    left: 82%;\n    top: 40px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding: 10px;\n}\n\n.toggle-btn.expanded1 {\n    transform: rotate(180deg);\n}\n\n.toggle-btn img {\n    width: 100%;\n    height: 100%;\n    object-fit: contain;\n    display: block;\n    transition: transform 0.2s ease;\n}\n\n.button-list {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n}\n\n.button-list li {\n    display: flex;\n    align-items: center;\n    padding: 10px;\n}\n\n.button-list li img {\n    width: 24px;\n    height: 24px;\n    margin-right: 10px;\n}\n\n.button-list li:hover {\n    background-color: #555;\n}\n\n.text {\n    display: none;\n}\n\n.sidebar.expanded .text {\n    display: inline;\n}\n\n.sidebar:hover .text {\n    display: inline;\n}\n\n.logo {\n    width: 30px;\n    height: auto;\n    left: 84%;\n}\n\n.logo.small {\n    width: 300px;\n    height: auto;\n    transition: width 0.5s ease; \n}\n\n.logocenter {\n    border: 5px solid;\n    position: absolute;\n    top: 45px;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    padding: 10px;\n}\n\n.logocenter.small {\n    border: 6px solid;\n    position: absolute;\n    top: 110px;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    padding: 10px;\n}\n\n.logoname {\n    width: 230px;\n    height: auto;\n}\n\n.divlogoname {\n    height: auto;\n    position: absolute;\n    top: 20px;\n    left: 80px;\n    padding: 10px;\n}\n\n.menu {\n    list-style: none;\n    position: absolute;\n    color: black;\n    top: 60px;\n    width: 95%;\n    padding: 0;\n    margin: 40px 0 0 0;\n    transition: transform 0.7s ease;\n}\n\n.menu.small {\n    list-style: none;\n    position: absolute;\n    color: black;\n    top: 170px;\n    width: 95%;\n    padding: 0;\n    margin: 40px 0 0 0;\n}\n\n.menu li {\n    display: flex;\n    align-items: center;\n    padding: 12px;\n    cursor: pointer;\n    transition: background 0.6s;\n}\n\n.menu li:hover {\n    background: #EDF3FE;\n}\n\n.icon {\n    width: 24px;\n    height: 24px;\n    margin-right: 40px;\n}\n\n.text {\n    display: inline-block; \n    opacity: 0;\n    transition: opacity 0.3s ease 0.8s;\n    font-size: 18px;\n}\n\n.sidebar:not(.expanded1) .menu li,\n.sidebar:hover:not(.expanded1) .menu li {\n    justify-content: left;\n}\n\n.sidebar:not(.expanded1) .text {\n    opacity: 0;\n    visibility: hidden;\n}\n\n.sidebar.expanded1 .menu li,\n.sidebar:hover .menu li {\n    \n    ustify-content: flex-start;\n    padding-left: 5px;\n}\n\n.sidebar.expanded1 .text,\n.sidebar:hover .text {\n    opacity: 1;\n    visibility: visible;\n    transition-delay: 0.8s;\n}\n\n.main_content {\n    top: 105px;\n    position: relative;\n    color: black;\n    margin-top: 10px;\n    margin-left: 100px;\n    padding: 2px;\n    transition: margin-left 0.3s ease;\n    display: grid;\n    grid-template-columns: 1fr 2fr; /* Две колонки */\n    gap: 20px;\n}\n  \n  .sidebar.expanded1 ~ .main_content {\n    margin-left: 400px;\n  }\n  \n.info-box {\n    text-align: center;\n}\n  \n.info-label {\n    margin-bottom: 10px;\n    font-size: 18px;\n    font-weight: bold;\n}\n  \n.info-rectangle {\n    width: 98%;\n    padding-right: -100px;\n    background-color: #fcfcfc;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    border-radius: 10px;\n}\n\n.table {\n    display: grid;\n    padding: 5px;\n    grid-template-columns: 6.5vw 1fr 1fr 1fr 1fr 1fr 1fr;\n    gap: 5px;\n}\n\n.row {\n    display: contents;\n}\n\n.cell {\n    background: white;\n    padding: 20px;\n    border-radius: 10px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    min-height: 30px;\n    text-align: left;\n}\n\n.header-row .cell {\n    background: #EDF3FE;\n    font-weight: bold;\n    text-align: center;\n}\n\n.time {\n    font-weight: bold;\n    background: #EDF3FE;\n    padding: 20px;\n}\n\n.subject a {\n    color: blue;\n    text-decoration: none;\n}\n\n.subject {\n    cursor: pointer;\n    background-color: #fff;\n    font-size: 14px;\n    line-height: 1.4;\n    transition: background-color 0.3s;\n  }\n  \n  .subject:hover {\n    background-color: #dee7f9c8\n  }\n\n.green { border-left: 5px solid green; }\n.blue { border-left: 5px solid rgb(0, 68, 255); }\n.purple { border-left: 5px solid purple; }\n.red { border-left: 5px solid rgb(133, 6, 6); }\n.cyan { border-left: 5px solid rgb(17, 4, 90); }\n\n.info-subject {\n    margin-bottom: 10px;\n    font-size: 30px;\n    font-weight: bold;\n}\n  \n.task_info_table {\n    display: grid;\n    padding: 6px;\n    grid-template-columns: 1fr 3fr;\n    gap: 5px;\n}\n\n@media (max-width: 1000px) {\n    .task_info_table {\n      grid-template-columns: 1.9fr 2fr;\n    }\n}\n\n@media (max-width: 1600px) {\n    .task_info_table {\n      grid-template-columns: 1.7fr 3fr;\n    }\n}\n\n@media (max-width: 1300px) {\n    .task_info_table {\n      grid-template-columns: 1fr 3fr;\n    }\n}\n\n@media (max-width: 850px) {\n    .task_info_table {\n      grid-template-columns: 3fr 1fr;\n    }\n}\n\n\n.task_state {\n    min-height: 150px;\n    background: #EDF3FE;\n    padding: 20px;\n    transition: all 0.3s ease;\n}\n\n.task_table {\n    display: grid;\n    min-width: 360px;\n    background: #EDF3FE;\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;\n    gap: 5px;\n}\n\n@media (max-width: 2300px) {\n    .task_table {\n      grid-template-columns: 1fr 1fr 1fr 1fr;\n    }\n}\n\n@media (max-width: 1500px) {\n    .task_table {\n      grid-template-columns: 1fr 1fr 1fr;\n    }\n    .task_state {\n        min-width: 300px;\n    }\n}\n\n@media (max-width: 1000px) {\n    .task_table {\n      grid-template-columns: 1fr 1fr;\n    }\n}\n\n@media (max-width: 900px) {\n    .task_table {\n      grid-template-columns: 1fr;\n      min-width: 200px;\n    }\n}\n\n@media (max-width: 810px) {\n    .task_info_table {\n        grid-template-columns: 1fr;\n    }\n}\n\n.task {\n    background: white;\n    padding: 20px;\n    border-radius: 10px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    min-height: 50px;\n    text-align: left;\n}\n\n.teacher-card {\n    background: white;\n    border-radius: 10px;\n    box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n    padding: 20px;\n    max-width: 600px;\n    min-width: 300px;\n    margin: 0 auto;\n  }\n  \n  .teacher-title {\n    font-size: 18px;\n    font-weight: bold;\n    text-align: left;\n    margin: 0 0 15px 0;\n    padding-left: 10px;\n  }\n  \n  .teacher-info {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n  }\n  \n  .teacher-photo {\n    width: 100px;\n    height: 100px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin-right: 20px;\n  }\n  \n  .teacher-details {\n    flex: 1;\n    text-align: left;\n  }\n  \n  .teacher-details p {\n    margin: 5px 0;\n  }\n  \n  .msg-button {\n    margin-top: 10px;\n    background-color: #0017e2;\n    color: white;\n    border: none;\n    padding: 10px 20px;\n    border-radius: 8px;\n    cursor: pointer;\n    font-size: 14px;\n  }\n  \n  .msg-button:hover {\n    background-color: #3054b8;\n  }\n  \n  .hidden {\n    display: none;\n \n}\n  \n.lab-details {\n  background: white;\n  border-radius: 10px;\n  box-shadow: 0 4px 8px rgba(215, 225, 238, 0.736);\n  padding: 20px;\n  max-width: 500px;\n  margin: 0 auto;\n}\n\n.lab-comment {\n  padding: 20px;\n}\n\n.task-status {\n  font-size: 14px;\n  color: #f00;\n  margin-top: 8px;\n}\n\n.assignment-details {\n  position: relative;\n  color: black;\n  margin-top: 10px;\n  transition: margin-left 0.3s ease;\n}\n\n.progress-container {\n  background-color: #f3f3f3;\n  border-radius: 8px;\n  height: 10px;\n  overflow: hidden;\n  margin-top: 10px;\n}\n\n.progress-bar {\n  height: 100%;\n  background-color: #4caf50;\n  transition: width 1s ease;\n}\n.task_p {\npadding: 30px;\n}\n`;\n\nmsg.cssText = css;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 160,
+        "wires": [
+            [
+                "9647228e347af4de"
+            ]
+        ]
+    },
+    {
+        "id": "9647228e347af4de",
+        "type": "template",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "Внешний вид списка чатов",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"ru\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Активные чаты</title>\n    <link rel=\"icon\" type=\"image/png\" href=\"https://cabinet.ssau.ru/asset/favicon.ico\">\n    <style>\n        {{{cssText}}}\n    </style>\n    <style>\n        /* Дополнительные стили для этой страницы */\n        .main_content {\n            margin-left: 60px; /* Уменьшаем отступ, чтобы боковое меню было лучше видно */\n            display: grid;\n            grid-template-columns: 1fr 2fr; /*  Две колонки: для списка и для чата */\n            gap: 20px; /* Отступ между колонками */\n        }\n\n        .dialog-list-container {\n            /*  Контейнер для списка диалогов */\n        }\n\n        .dialog-list {\n            list-style: none;\n            padding: 0;\n            margin: 20px 0;\n        }\n\n        .dialog-item {\n            display: flex;\n            align-items: center;\n            padding: 10px;\n            border-bottom: 1px solid #eee;\n            cursor: pointer;\n            background-color: #fff;\n        }\n\n        .dialog-item:hover {\n            background-color: #f9f9f9;\n        }\n\n        .dialog-icon {\n            width: 30px;\n            height: 30px;\n            margin-right: 10px;\n            border-radius: 50%;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            color: white;\n        }\n\n        .dialog-icon.tz {\n            background-color: #0D47A1; /* Цвет для иконки \"ТЗ\" */\n        }\n\n        .dialog-icon.chat {\n            background-color: #1D5DEB; /* Цвет для иконки чата */\n        }\n\n        .dialog-text {\n            flex-grow: 1;\n            overflow: hidden;\n            text-overflow: ellipsis;\n            white-space: nowrap;\n        }\n\n        .chat-view {\n            display: none;\n            margin-top: 20px;\n            background-color: #fff;\n            padding: 20px;\n            border-radius: 5px;\n            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n            border-radius: 5 px;\n        }\n\n        .chat-view.active {\n            display: block;\n        }\n\n        #searchBar {\n            width: 100%;\n            padding: 10px;\n            margin-bottom: 10px;\n            border: 1px solid #ccc;\n            border-radius: 5px;\n            box-sizing: border-box;\n        }\n\n        .hidden {\n            display: none;\n        }\n\n        .chat-messages {\n            height: 300px;\n            overflow-y: scroll;\n            padding: 10px;\n            border: 1px solid #ddd;\n            margin-bottom: 10px;\n        }\n\n        .message {\n            padding: 8px 12px;\n            margin-bottom: 5px;\n            border-radius: 5px;\n            background-color: #f0f0f0;\n        }\n\n        .input-area {\n            display: flex;\n            align-items: center;\n        }\n\n        .input-area input {\n            flex-grow: 1;\n            padding: 8px;\n            border: 1px solid #ddd;\n            border-radius: 5px;\n        }\n\n        .input-area button {\n            padding: 8px 12px;\n            margin-left: 5px;\n            border: none;\n            border-radius: 5px;\n            background-color: #007bff;\n            color: white;\n            cursor: pointer;\n        }\n\n        .input-area button:hover {\n            background-color: #0056b3;\n        }\n    </style>\n</head>\n<body>\n\n<header class=\"topbar\">\n    <div class=\"divlogoname\"><img\n            src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logoname.png\"\n            class=\"logoname\"></div>\n</header>\n\n<div class=\"sidebar\" id=\"sidebar\">\n    <div class=\"logocenter\" id=\"logocenter\">\n        <img\n                src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logo_osnovnoy_small.png\"\n                class=\"logo\" id=\"logo\">\n    </div>\n    <button class=\"toggle-btn\" id=\"toggleBtn\">\n        <img src=\"https://github.com/Kulakov1Dima/SsauWorkspace/blob/main/hahaton_exemple_fronted/expand.png?raw=true\">\n    </button>\n    <ul class=\"menu\" id=\"menu\">\n        <li>\n            <img\n                    src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/home1.png\"\n                    class=\"icon\">\n            <span class=\"text\">Главная</span>\n        </li>\n        <li onclick=\"location.href='http://ibook.daa2557bc9hb3.keenetic.pro/messenger';\" style=\"cursor:pointer;\">\n            <img\n                    src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/messenger.png\"\n                    class=\"icon\">\n            <span class=\"text\">Мессенджер</span>\n        </li>\n        <li onclick=\"location.href='http://ibook.daa2557bc9hb3.keenetic.pro/ssau';\" style=\"cursor:pointer;\">\n            <img                     src=\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/schedule.png\"\n            class=\"icon\">\n    <span class=\"text\">Расписание</span>\n</li>\n</ul>\n</div>\n\n<div class=\"main_content\">\n\n<div class=\"dialog-list-container\">\n<h2>Активные чаты</h2>\n<input type=\"text\" id=\"searchBar\" placeholder=\"Поиск...\">\n<ul class=\"dialog-list\" id=\"dialogList\">\n</ul>\n</div>\n\n<div id=\"chatView\" class=\"chat-view\">\n<h3>Название чата</h3>\n<div class=\"chat-messages\">\n    <!-- Сообщения чата будут здесь -->\n    <div class=\"message\"></div>\n    <div class=\"message\"></div>\n</div>\n<div class=\"input-area\">\n    <input type=\"text\" placeholder=\"Сообщение...\">\n    <button>Отправить</button>\n</div>\n</div>\n\n</div>\n\n<script>\nconst imagesToPreload = [\n\"http://ibook.daa2557bc9hb3.keenetic.pro/logo_osnovnoy.png\",\n\"https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logo_osnovnoy_small.png\"\n];\n\nimagesToPreload.forEach(src => {\nconst img = new Image();\nimg.src = src;\n});\n\nconst sidebar = document.getElementById('sidebar');\nconst toggleBtn = document.getElementById('toggleBtn');\nconst logo = document.getElementById('logo');\n    const logocenter = document.getElementById('logocenter');\n    const menu = document.getElementById('menu');\n\n    toggleBtn.addEventListener('click', () => {\n        if (!toggleBtn.classList.contains('expanded1')) {\n            toggleBtn.classList.add('expanded1');\n            sidebar.classList.add('expanded1');\n        } else {\n            toggleBtn.classList.remove('expanded1');\n            sidebar.classList.remove('expanded1');\n        }\n    });\n\n    sidebar.addEventListener('mouseenter', () => {\n        logo.src = 'http://ibook.daa2557bc9hb3.keenetic.pro/logo_osnovnoy.png';\n        logo.classList.add('small');\n        logocenter.classList.add('small');\n        menu.classList.add('small');\n    });\n\n    sidebar.addEventListener('mouseleave', () => {\n        if (!sidebar.classList.contains('expanded1')) {\n            logo.src = 'https://raw.githubusercontent.com/Kulakov1Dima/SsauWorkspace/refs/heads/main/hahaton_exemple_fronted/logo_osnovnoy_small.png';\n            logo.classList.remove('small');\n            logocenter.classList.remove('small');\n            menu.classList.remove('small');\n        }\n    });\n    document.addEventListener('DOMContentLoaded', function () {\n        const dialogList = document.getElementById('dialogList');\n        const chatView = document.getElementById('chatView');\n        const searchBar = document.getElementById('searchBar');\n\n        // Данные для примера, замените на реальные данные из API\n        const dialogs = [\n            {\n                type: 'tz',\n                name: 'Использование Linux',\n                url: 'http://ibook.daa2557bc9hb3.keenetic.pro/subject?name=Использование%20Linux'\n            },\n            {\n                type: 'chat',\n                name: 'Использование Linux | Чат'\n            },\n            {\n                type: 'tz',\n                name: 'Системное программирование',\n                url: 'http://ibook.daa2557bc9hb3.keenetic.pro/subject?name=Системное%20программирование'\n            },\n            {\n                type: 'chat',\n                name: 'Системное программирование | Чат'\n            },\n            {\n                type: 'tz',\n                name: 'Системы искусственного интеллекта',\n                url: 'http://ibook.daa2557bc9hb3.keenetic.pro/subject?name=Системы%20искусственного%20интеллекта'\n            },\n            {\n                type: 'chat',\n                name: 'Системы искусственного интеллекта | Чат'\n            },\n            {\n                type: 'tz',\n                name: 'Технологии проектирования',\n                url: 'http://ibook.daa2557bc9hb3.keenetic.pro/subject?name=Технологии%20проектирования'\n            }\n        ];\n\n        function displayDialogs(dialogsToDisplay) {\n            dialogList.innerHTML = ''; // Очищаем список\n\n            dialogsToDisplay.forEach(dialog => {\n                const li = document.createElement('li');\n                li.classList.add('dialog-item');\n                li.dataset.type = dialog.type;\n                li.dataset.name = dialog.name; // Сохраняем название для показа в чате\n\n                let iconText = '';\n                let iconClass = '';\n\n                if (dialog.type === 'tz') {\n                    iconText = 'ТЗ';\n                    iconClass = 'tz';\n                    li.addEventListener('click', () => {\n                         window.location.href = dialog.url;\n                    });\n                } else if (dialog.type === 'chat') {\n                    iconText = '<i class=\"fas fa-users\"></i>'; // Используем Font Awesome иконку\n                    iconClass = 'chat';\n                    li.addEventListener('click', () => {\n                        displayChat(dialog.name);\n                    });\n                }\n\n                li.innerHTML = `\n                        <div class=\"dialog-icon ${iconClass}\">${iconText}</div>\n                        <div class=\"dialog-text\">${dialog.name}</div>\n                    `;\n\n                dialogList.appendChild(li);\n            });\n        }\n\n        function displayChat(chatName) {\n            const chatView = document.getElementById('chatView');\n            chatView.querySelector('h3').textContent = chatName;\n            chatView.classList.add('active');\n        }\n\n\n        searchBar.addEventListener('input', function (e) {\n            const searchTerm = e.target.value.toLowerCase();\n            const filteredDialogs = dialogs.filter(dialog => {\n                return dialog.name.toLowerCase().includes(searchTerm);\n            });\n            displayDialogs(filteredDialogs);\n        });\n\n        // Инициализация отображения диалогов\n        displayDialogs(dialogs);\n    });\n\n\n</script>\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css\" integrity=\"sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" />\n</body>\n</html>\n",
+        "output": "str",
+        "x": 520,
+        "y": 160,
+        "wires": [
+            [
+                "f867e8a8395f63a4"
+            ]
+        ],
+        "icon": "node-red/parser-html.svg"
+    },
+    {
+        "id": "f867e8a8395f63a4",
+        "type": "http response",
+        "z": "96b3a7bdffc02a46",
+        "g": "b83cceb90218bb16",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 750,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d3f44785a6cfb327",
+        "type": "sqlitedb",
+        "db": "/tmp/ssau",
+        "mode": "RWC"
+    }
+]
